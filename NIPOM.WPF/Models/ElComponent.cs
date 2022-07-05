@@ -1,18 +1,18 @@
-﻿using System;
+﻿using NIPOM.WPF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace NIPOM.WPF.Models
 {
     [Serializable]
-    internal class ElectricalComponent
+    public class ElComponent
     {
         public string Name { get; set; }
         public string Manufacturer { get; set; }
         public string Category { get; set; }
         public double Price { get; set; }
-        public uint Count { get; set; }
-        public string Sum { get; set; }
-
+        public double Count { get; set; }
+        public double Sum => Count * Price;
     }
 }

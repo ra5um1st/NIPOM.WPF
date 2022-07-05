@@ -7,8 +7,8 @@ namespace NIPOM.WPF.Commands
 {
     internal class DelegateCommand : ICommand
     {
-        private Action<object> action;
-        private Func<object, bool> function;
+        protected Action<object> action;
+        protected Func<object, bool> function;
 
         public DelegateCommand(Action<object> action, Func<object, bool> function = null)
         {

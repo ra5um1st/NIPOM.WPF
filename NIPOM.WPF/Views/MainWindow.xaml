@@ -10,22 +10,54 @@
     <Window.DataContext>
         <vm:ComponentsViewModel/>
     </Window.DataContext>
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="MenuButtonStyle">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="10 5"/>
+            <Setter Property="Background" Value="WhiteSmoke"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
-        <StackPanel
-            Grid.Row="0"
-            Orientation="Horizontal">
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <StackPanel.Resources>
+                <Style TargetType="Button" BasedOn="{StaticResource MenuButtonStyle}"/>
+            </StackPanel.Resources>
             <Button Content="Открыть Excel" Command="{Binding OpenFileExcel}"/>
-            <Button Content="Открыть XML" Command="{Binding OpenFileExcel}"/>
-            <Button Content="Сохранить XML" Command="{Binding OpenFileExcel}"/>
+            <Button Content="Открыть XML" Command="{Binding OpenFileXML}"/>
+            <Button Content="Сохранить XML" Command="{Binding SaveFileXML}"/>
         </StackPanel>
-        <DataGrid
-            Grid.Row="1">
-            
+        
+        <StackPanel Grid.Row="1" Background="WhiteSmoke">
+            <TextBlock Text="Электрокомпоненты" Padding="10 5" FontSize="16"/>
+        </StackPanel>
+
+        <DataGrid Grid.Row="2" ItemsSource="{Binding ElectricalComponents}" AutoGenerateColumns="False" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto">
+            <DataGrid.Columns>
+                <DataGridTextColumn 
+                    Header="Наименование"
+                    Binding="{Binding Name}"/>
+                <DataGridTextColumn 
+                    Header="Производитель"
+                    Binding="{Binding Manufacturer}"/>
+                <DataGridTextColumn 
+                    Header="Категория монтажа"
+                    Binding="{Binding Category}"/>
+                <DataGridTextColumn 
+                    Header="Стоимость"
+                    Binding="{Binding Price}"/>
+                <DataGridTextColumn 
+                    Header="Количество"
+                    Binding="{Binding Count}"/>
+                <DataGridTextColumn 
+                    Header="Сумма"
+                    Binding="{Binding Sum}"/>
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </Window>

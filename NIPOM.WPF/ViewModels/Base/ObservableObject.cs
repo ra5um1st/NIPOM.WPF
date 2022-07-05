@@ -6,7 +6,7 @@ using System.Text;
 
 namespace NIPOM.WPF.ViewModels
 {
-    abstract internal class ObservableObject : INotifyPropertyChanged
+    public abstract class ObservableObject : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
